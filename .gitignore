@@ -34,3 +34,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### import ###
+application-prod.properties
+application-test.properties
