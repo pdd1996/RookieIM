@@ -2,6 +2,11 @@ spring:
   profiles:
     # 运行环境
     active: test
+  datasource:
+    url: jdbc:mysql://${rookie-im.mysql.ip}:${rookie-im.server.port}/${rookie-im-mysql.db}?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ${rookie-im.mysql.username}
+    password: ${rookie-im.mysql.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 server:
   port: ${rookie-im.server.port}
