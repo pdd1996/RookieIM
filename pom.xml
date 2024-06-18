@@ -46,8 +46,8 @@
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator</artifactId>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus-generator.version}</version>
             </dependency>
             <dependency>
