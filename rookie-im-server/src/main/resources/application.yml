@@ -3,7 +3,7 @@ spring:
     # 运行环境
     active: test
   datasource:
-    url: jdbc:mysql://${rookie-im.mysql.ip}:${rookie-im.server.port}/${rookie-im-mysql.db}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://${rookie-im.mysql.ip}:${rookie-im.mysql.port}/${rookie-im.mysql.db}?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: ${rookie-im.mysql.username}
     password: ${rookie-im.mysql.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
