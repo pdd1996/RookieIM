@@ -1,6 +1,7 @@
 package com.rookie.im.user.service;
 
 import com.rookie.im.user.domain.entity.User;
+import com.rookie.im.user.domain.req.ImportUserReq;
 
 /**
  * <p>
@@ -12,4 +13,7 @@ import com.rookie.im.user.domain.entity.User;
  */
 public interface IUserService {
     User getUserById(Integer id);
+
+    void importUsers(ImportUserReq req);
+
 }
