@@ -21,7 +21,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void importUsers(ImportUserReq req) {
         req.getUserList().forEach(e -> {
-            User user = UserAdapter.importUserSave(e);
+            User user = UserAdapter.importUserSave(req.getAppId(), e);
             // user - > entity
             userDao.save(user);
         });
