@@ -3,9 +3,10 @@ package com.rookie.im.user.domain.dto;
 import lombok.Data;
 
 @Data
-public class UserEntity {
+public class UserDto {
 
     private Long appId;
+
     private String userName;
 
     private String mobile;
