@@ -1,4 +1,4 @@
-package com.rookie.im.handler;
+package com.rookie.im.common.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
