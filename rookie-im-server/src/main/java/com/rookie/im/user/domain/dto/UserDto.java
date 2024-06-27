@@ -1,7 +1,10 @@
 package com.rookie.im.user.domain.dto;
 
+import com.rookie.im.common.annotation.IsMobile;
 import lombok.Data;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -15,6 +18,7 @@ public class UserDto {
 
     // 必填
     @NotNull
+    @IsMobile
     private String mobile;
 
     private String email;
