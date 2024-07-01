@@ -2,6 +2,7 @@ package com.rookie.im.user.service;
 
 import com.rookie.im.user.domain.entity.User;
 import com.rookie.im.user.domain.req.ImportUserReq;
+import com.rookie.im.user.domain.req.ModifyUserInfoReq;
 import com.rookie.im.user.domain.resp.ImportUserResp;
 
 /**
@@ -17,4 +18,5 @@ public interface IUserService {
 
     ImportUserResp importUsers(ImportUserReq req);
 
+    void modifyUserInfo(ModifyUserInfoReq req);
 }

@@ -41,11 +41,11 @@ public class User implements Serializable {
     @TableField("user_name")
     private String userName;
 
-    /**
-     * 用户密码
-     */
-    @TableField("password")
-    private String password;
+//    /**
+//     * 用户密码
+//     */
+//    @TableField("password")
+//    private String password;
 
     /**
      * 应用 ID
@@ -116,8 +116,8 @@ public class User implements Serializable {
     /**
      * 禁言标识 1禁言
      */
-    @TableField("slient_flag")
-    private Integer slientFlag;
+    @TableField("silent_flag")
+    private Integer silentFlag;
 
     /**
      * 用户类型 1普通用户 2客户 3机器人

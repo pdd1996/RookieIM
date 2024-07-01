@@ -3,6 +3,7 @@ package com.rookie.im.user.controller;
 
 import com.rookie.im.common.domain.resp.ApiResult;
 import com.rookie.im.user.domain.req.ImportUserReq;
+import com.rookie.im.user.domain.req.ModifyUserInfoReq;
 import com.rookie.im.user.domain.resp.ImportUserResp;
 import com.rookie.im.user.service.IUserService;
 import io.swagger.annotations.Api;
@@ -35,6 +36,13 @@ public class UserController {
     public ApiResult<ImportUserResp> importUser(@RequestBody @Valid ImportUserReq req){
         ImportUserResp resp = userService.importUsers(req);
         return ApiResult.success(resp);
+    }
+
+    @PostMapping("/modify")
+    @ApiOperation(value = "修改用户信息")
+    public ApiResult<Void> ModifyUserInfo(@RequestBody @Valid ModifyUserInfoReq req){
+        userService.modifyUserInfo(req);
+        return ApiResult.success();
     }
 }
 
