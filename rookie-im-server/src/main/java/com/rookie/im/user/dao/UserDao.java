@@ -1,10 +1,14 @@
 package com.rookie.im.user.dao;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.rookie.im.common.enums.YesOrNoEnum;
 import com.rookie.im.user.domain.entity.User;
 import com.rookie.im.user.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,7 +20,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserDao extends ServiceImpl<UserMapper, User> {
-
+    @Autowired
+    private UserMapper userMapper;
     public User getUserInfoByUserId(Long appId, String userId) {
         return lambdaQuery()
                 .eq(User::getAppId, appId)
@@ -35,5 +40,14 @@ public class UserDao extends ServiceImpl<UserMapper, User> {
                 .set(User::getSelfSignature, update.getSelfSignature())
                 .set(User::getFriendAllowType, update.getFriendAllowType())
                 .update();
+    }
+
+    public List<User> getAllUser(Long appId) {
+
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(User::getAppId, appId);
+        lambdaQueryWrapper.eq(User::getForbiddenFlag, YesOrNoEnum.NO.getStatus());
+
+        return userMapper.selectList(lambdaQueryWrapper);
     }
 }

@@ -2,6 +2,7 @@ package com.rookie.im.user.controller;
 
 
 import com.rookie.im.common.domain.resp.ApiResult;
+import com.rookie.im.user.domain.dto.UserDto;
 import com.rookie.im.user.domain.req.ImportUserReq;
 import com.rookie.im.user.domain.req.ModifyUserInfoReq;
 import com.rookie.im.user.domain.resp.ImportUserResp;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * <p>
@@ -43,6 +45,13 @@ public class UserController {
     public ApiResult<Void> ModifyUserInfo(@RequestBody @Valid ModifyUserInfoReq req){
         userService.modifyUserInfo(req);
         return ApiResult.success();
+    }
+
+    @GetMapping("/getAllUserInfo")
+    @ApiOperation(value = "获取所有用户信息")
+    public ApiResult<List<UserDto>> GetAllUserInfo(Long appId){
+        List<UserDto> allUser = userService.getAllUser(appId);
+        return ApiResult.success(allUser);
     }
 }
 

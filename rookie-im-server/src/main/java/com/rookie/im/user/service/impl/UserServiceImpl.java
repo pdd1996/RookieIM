@@ -5,6 +5,7 @@ import com.rookie.im.common.exception.BusinessException;
 import com.rookie.im.common.exception.UserExceptionEnum;
 import com.rookie.im.common.utils.AssertUtil;
 import com.rookie.im.user.dao.UserDao;
+import com.rookie.im.user.domain.dto.UserDto;
 import com.rookie.im.user.domain.entity.User;
 import com.rookie.im.user.domain.req.ImportUserReq;
 import com.rookie.im.user.domain.req.ModifyUserInfoReq;
@@ -62,6 +63,19 @@ public class UserServiceImpl implements IUserService {
         if (!save) {
             throw new BusinessException(UserExceptionEnum.MODIFY_USER_INFO_ERROR);
         }
+    }
+
+    @Override
+    public List<UserDto> getAllUser(Long appId) {
+        List<UserDto> userInfoList = new ArrayList<>();
+        List<User> allUser = userDao.getAllUser(appId);
+
+        allUser.forEach(record -> {
+            UserDto userDto = UserAdapter.buildUserInfo(record);
+            userInfoList.add(userDto);
+        });
+
+        return userInfoList;
     }
 
 }
