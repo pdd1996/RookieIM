@@ -1,12 +1,11 @@
 package com.rookie.im.user.service;
 
+import com.rookie.im.common.domain.resp.PageResponse;
 import com.rookie.im.user.domain.dto.UserDto;
 import com.rookie.im.user.domain.entity.User;
 import com.rookie.im.user.domain.req.ImportUserReq;
 import com.rookie.im.user.domain.req.ModifyUserInfoReq;
 import com.rookie.im.user.domain.resp.ImportUserResp;
-
-import java.util.List;
 
 /**
  * <p>
@@ -23,5 +22,5 @@ public interface IUserService {
 
     void modifyUserInfo(ModifyUserInfoReq req);
 
-    List<UserDto> getAllUser(Long appId);
+    PageResponse<UserDto> getAllUser(Long appId, Integer page, Integer pageSize);
 }

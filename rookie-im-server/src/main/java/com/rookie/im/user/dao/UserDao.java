@@ -1,14 +1,13 @@
 package com.rookie.im.user.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rookie.im.common.enums.YesOrNoEnum;
 import com.rookie.im.user.domain.entity.User;
 import com.rookie.im.user.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * <p>
@@ -42,12 +41,12 @@ public class UserDao extends ServiceImpl<UserMapper, User> {
                 .update();
     }
 
-    public List<User> getAllUser(Long appId) {
+    public Page<User> getAllUser(Long appId, Page<User> userPage) {
 
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(User::getAppId, appId);
         lambdaQueryWrapper.eq(User::getForbiddenFlag, YesOrNoEnum.NO.getStatus());
 
-        return userMapper.selectList(lambdaQueryWrapper);
+        return userMapper.selectPage(userPage, lambdaQueryWrapper);
     }
 }

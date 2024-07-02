@@ -1,6 +1,8 @@
 package com.rookie.im.user.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.rookie.im.common.domain.resp.PageResponse;
 import com.rookie.im.common.exception.BusinessException;
 import com.rookie.im.common.exception.UserExceptionEnum;
 import com.rookie.im.common.utils.AssertUtil;
@@ -66,16 +68,25 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<UserDto> getAllUser(Long appId) {
+    public PageResponse<UserDto> getAllUser(Long appId, Integer page, Integer pageSize) {
         List<UserDto> userInfoList = new ArrayList<>();
-        List<User> allUser = userDao.getAllUser(appId);
 
-        allUser.forEach(record -> {
+        Page<User> userPage = new Page<>(page, pageSize);
+
+        Page<User> allUser = userDao.getAllUser(appId, userPage);
+
+        allUser.getRecords().forEach(record -> {
             UserDto userDto = UserAdapter.buildUserInfo(record);
             userInfoList.add(userDto);
         });
 
-        return userInfoList;
+        PageResponse<UserDto> response = new PageResponse<>();
+        response.setRecords(userInfoList);
+        response.setTotal(allUser.getTotal());
+        response.setPage(page);
+        response.setPageSize(pageSize);
+
+        return response;
     }
 
 }
